@@ -20,7 +20,7 @@
     "url": "https://www.ifte.de"
   },
   "license": "MIT",
-  "homepage": "https://github.com/IFTE-EDA/strict-content-mathml-editor",
+  "homepage": "https://ifte-eda.github.io/strict-content-mathml-editor/",
   "bugs": "https://github.com/IFTE-EDA/strict-content-mathml-editor/issues",
   "files": [
     "guppy-xml-to-mathml.js",

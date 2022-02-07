@@ -2,7 +2,16 @@
 
 This editor helps to create Strict Content MathML 3.0 expressions.
 
-Features:
+## Demo
+
+Visit https://ifte-eda.github.io/strict-content-mathml-editor/ for a simple demo page that displays the generated Strict Content MathML code.
+
+## Screenshot
+
+![Screenshot of the Strict Content MathML Editor](https://ifte-eda.github.io/strict-content-mathml-editor/screenshot.png "Screenshot")
+
+## Features
+
 - Support of custom symbols, e.g. type `Umax` and get the single symbol *U*<sub>max</sub> instead of the product *Umax* in the formula editor
 - Support of SI prefixes and units
 - Support of piecewise-defined expressions
