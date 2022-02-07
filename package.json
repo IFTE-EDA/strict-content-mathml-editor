@@ -1,6 +1,6 @@
 {
   "name": "strict-content-mathml-editor",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "WYSIWYG editor for MathML expressions",
   "repository": {
     "type": "git",
