@@ -1,0 +1,32 @@
+{
+  "name": "strict-content-mathml-editor",
+  "version": "1.0.0",
+  "description": "WYSIWYG editor for MathML expressions",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IFTE-EDA/strict-content-mathml-editor"
+  },
+  "keywords": [
+    "mathml",
+    "mathml3",
+    "math",
+    "xml",
+    "equation",
+    "formula",
+    "editor"
+  ],
+  "author": {
+    "name": "Andreas Krinke",
+    "url": "https://www.ifte.de"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/IFTE-EDA/strict-content-mathml-editor",
+  "bugs": "https://github.com/IFTE-EDA/strict-content-mathml-editor/issues",
+  "files": [
+    "guppy-xml-to-mathml.js",
+    "strict-content-mathml-symbols.json"
+  ],
+  "dependencies": {
+    "guppy-js": "^2.0.0-beta.3"
+  }
+}

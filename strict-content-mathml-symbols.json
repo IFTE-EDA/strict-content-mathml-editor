@@ -1,0 +1,326 @@
+{
+    "_version": "2.0.0-alpha.3",
+    "_name": "strict-content-mathml",
+    "_templates":
+    {
+        "algorithmic_concept2":{
+            "output":{
+                "latex": "\\text{{$name}}\\left({$1}, {$2}\\right)",
+                "asciimath":"{$name}({$1}, {$2})"
+            },
+            "attrs":{
+                "type":"{$name}",
+                "group":"algorithms"
+            }
+        },
+        "algorithmic_concept3":{
+            "output":{
+                "latex": "\\text{{$name}}\\left({$1}, {$2}, {$3}\\right)",
+                "asciimath":"{$name}({$1}, {$2}, {$3})"
+            },
+            "attrs":{
+                "type":"{$name}",
+                "group":"algorithms"
+            }
+        },
+        "algorithmic_concept4":{
+            "output":{
+                "latex": "\\text{{$name}}\\left({$1}, {$2}, {$3}, {$4}\\right)",
+                "asciimath":"{$name}({$1}, {$2}, {$3}, {$4})"
+            },
+            "attrs":{
+                "type":"{$name}",
+                "group":"algorithms"
+            }
+        },
+        "algorithmic_conceptn":{
+            "output":{
+                "latex": "\\text{{$name}}\\left({$1{,}}\\right)",
+                "asciimath":"{$name}({$1{,}})"
+            },
+            "attrs":{
+                "type":"{$name}",
+                "group":"algorithms"
+            }
+        },
+        "logic":{
+            "output":{
+                "latex": "{$latex}",
+                "asciimath":"{$1} {$asciimath} {$2}"
+            },
+            "keys":["{$type}"],
+            "attrs":{
+                "type":"{$name}",
+                "group":"logic"
+            },
+            "input":1,
+            "args": [{"bracket":"yes"},{"bracket":"yes","delete":"1"}]
+        },
+        "unit":{
+            "output":{
+                "latex": "\\text{{$symbol}}",
+                "asciimath":"{$symbol}"
+            },
+            "attrs":{
+                "type":"{$name}",
+                "cd":"{$cd}",
+                "group":"units"
+            },
+            "args":[{
+            }]
+        },
+        "prefix":{
+            "output":{
+                "latex": "\\text{{$symbol}}{$1}",
+                "asciimath":"{$symbol}{$1}"
+            },
+            "attrs":{
+                "type":"{$name}",
+                "group":"prefixes"
+            },
+            "args":[{"bracket":"yes"}]
+        }
+    },
+
+    "ceiling": {
+        "output": {
+            "latex": "\\lceil {$1} \\rceil",
+            "asciimath": "ceil({$1})"
+        },
+        "attrs": {
+            "type":"ceil",
+            "group":"functions"
+        },
+        "args":[
+            {"delete": "1"}
+        ]
+    },
+    "sum": {
+        "output": {
+            "latex": "\\displaystyle\\sum_{{$1}={$2}}^{{$3}}{$4}",
+            "small_latex": "\\sum_{{$1}={$2}}^{{$3}}{$4}",
+	        "asciimath": "sum_{{$1}={$2}}^{{$3}} {$4}"},
+        "attrs": {
+	        "type": "summation",
+	        "group": "functions"
+        },
+        "args": [
+	        {"down":"1","up":"2","small":"yes","name":"variable"},
+	        {"down":"1","up":"2","small":"yes","name":"lower_limit"},
+	        {"down":"1","up":"2","small":"yes","name":"upper_limit"},
+	        {"down":"1","up":"2","delete":"3","bracket":"yes","name":"summand"}
+        ]
+    },
+    "prod": {
+        "output": {
+            "latex": "\\displaystyle\\prod_{{$1}={$2}}^{{$3}}{$4}",
+            "small_latex": "\\prod_{{$1}={$2}}^{{$3}}{$4}",
+	        "asciimath": "prod_{{$1}={$2}}^{{$3}} {$4}"},
+        "attrs": {
+	        "type": "product",
+	        "group": "functions"
+        },
+        "args": [
+	        {"down":"1","up":"2","small":"yes","name":"variable"},
+	        {"down":"1","up":"2","small":"yes","name":"lower_limit"},
+	        {"down":"1","up":"2","small":"yes","name":"upper_limit"},
+	        {"down":"1","up":"2","delete":"3","bracket":"yes","name":"factor"}
+        ]
+    },
+
+    "cases": {
+        "output": {
+            "latex": "\\begin{cases} {$1{ & \\enspace }{\\\\}} \\end{cases}",
+            "asciimath": "cases({$1{ if }{;}})"
+        },
+        "attrs": {
+            "type":"cases",
+            "group":"array"
+        }
+    },
+    "otherwise":{
+        "output":{
+            "latex":"\\text{otherwise}",
+            "asciimath":"otherwise"
+        },
+        "attrs":{
+            "group":"array",
+            "type":"otherwise"
+        }
+    },
+    "not":{
+        "output": {
+            "latex":"\\neg {$1}",
+            "asciimath":"not {$1}"
+        },
+        "keys":["not"],
+        "attrs": {
+            "group":"logic",
+            "type":"not"
+        }
+    },
+    "logic":{
+        "template":"logic",
+        "values":{
+            "and":{
+                "latex":"{$1} \\wedge {$2}",
+                "asciimath":" and ",
+                "type":"and"
+            },
+            "or":{
+                "latex":"{$1} \\vee {$2}",
+                "asciimath":" or ",
+                "type":"or"
+            },
+            "xor":{
+                "latex":"{$1} \\oplus {$2}",
+                "asciimath":" xor ",
+                "type":"xor"
+            },
+            "nand":{
+                "latex":"\\overline{{$1} \\wedge {$2}}",
+                "asciimath":" nand ",
+                "type":"nand"
+            },
+            "nor":{
+                "latex":"\\overline{{$1} \\vee {$2}}",
+                "asciimath":" nor ",
+                "type":"nor"
+            },
+            "xnor":{
+                "latex":"\\overline{{$1} \\oplus {$2}}",
+                "asciimath":" xnor ",
+                "type":"xnor"
+            }
+        }
+    },
+    "true":{
+        "output":{
+            "latex":"\\text{T}",
+            "asciimath":"T"
+        },
+        "attrs":{
+            "group":"logic",
+            "type":"true"
+        }
+    },
+    "false":{
+        "output":{
+            "latex":"\\text{F}",
+            "asciimath":"F"
+        },
+        "attrs":{
+            "group":"logic",
+            "type":"false"
+        }
+    },
+    "prog2":{
+        "template":"algorithmic_concept2",
+        "values":{
+            "assignment":{},
+            "functionBlock":{},
+            "functionCall":{},
+            "procedureCall":{},
+            "while":{}
+        }
+    },
+    "prog3":{
+        "template":"algorithmic_concept3",
+        "values":{
+            "functionDefinition":{},
+            "if":{},
+            "procedureBlock":{},
+            "procedureDefinition":{}
+        }
+    },
+    "prog4":{
+        "template":"algorithmic_concept4",
+        "values":{
+            "for":{}
+        }
+    },
+    "progn":{
+        "template":"algorithmic_conceptn",
+        "values":{
+            "block":{},
+            "callArguments":{},
+            "defArguments":{},
+            "globalVar":{},
+            "localVar":{},
+            "return":{}
+        }
+    },
+    "prefixes":{
+        "template":"prefix",
+        "values":{
+            "yocto":{"cd":"units_siprefix1","symbol":"y"},
+            "zepto":{"cd":"units_siprefix1","symbol":"z"},
+            "atto":{"cd":"units_siprefix1","symbol":"a"},
+            "femto":{"cd":"units_siprefix1","symbol":"f"},
+            "pico":{"cd":"units_siprefix1","symbol":"p"},
+            "nano":{"cd":"units_siprefix1","symbol":"n"},
+            "micro":{"cd":"units_siprefix1","symbol":"$\\mu$"},
+            "milli":{"cd":"units_siprefix1","symbol":"m"},
+            "centi":{"cd":"units_siprefix1","symbol":"c"},
+            "deci":{"cd":"units_siprefix1","symbol":"d"},
+            "deka":{"cd":"units_siprefix1","symbol":"da"},
+            "hecto":{"cd":"units_siprefix1","symbol":"h"},
+            "kilo":{"cd":"units_siprefix1","symbol":"k"},
+            "mega":{"cd":"units_siprefix1","symbol":"M"},
+            "giga":{"cd":"units_siprefix1","symbol":"G"},
+            "tera":{"cd":"units_siprefix1","symbol":"T"},
+            "peta":{"cd":"units_siprefix1","symbol":"P"},
+            "exa":{"cd":"units_siprefix1","symbol":"E"},
+            "zetta":{"cd":"units_siprefix1","symbol":"Z"},
+            "yotta":{"cd":"units_siprefix1","symbol":"Y"}
+        }
+    },
+    "units":{
+        "template":"unit",
+        "values":{
+            "ampere":{"cd":"SI_BaseUnits1","symbol":"A"},
+            "becquerel":{"cd":"SI_NamedDerivedUnits1","symbol":"Bq"},
+            "bel":{"cd":"SIUsed_OffSystemUnits1","symbol":"B"},
+            "candela":{"cd":"SI_BaseUnits1","symbol":"cd"},
+            "coulomb":{"cd":"SI_NamedDerivedUnits1","symbol":"C"},
+            "day":{"cd":"SIUsed_OffSystemUnits1","symbol":"d"},
+            "degree celsius":{"cd":"SI_NamedDerivedUnits1","symbol":"\\degree{}C"},
+            "farad":{"cd":"SI_NamedDerivedUnits1","symbol":"F"},
+            "gram":{"cd":"SI_NamedDerivedUnits1","symbol":"g"},
+            "gray":{"cd":"SI_NamedDerivedUnits1","symbol":"Gy"},
+            "henry":{"cd":"SI_NamedDerivedUnits1","symbol":"H"},
+            "hertz":{"cd":"SI_NamedDerivedUnits1","symbol":"Hz"},
+            "hour":{"cd":"SIUsed_OffSystemUnits1","symbol":"h"},
+            "joule":{"cd":"SI_NamedDerivedUnits1","symbol":"J"},
+            "katal":{"cd":"SI_NamedDerivedUnits1","symbol":"kat"},
+            "kelvin":{"cd":"SI_BaseUnits1","symbol":"K"},
+            "kilogram":{"cd":"SI_BaseUnits1","symbol":"kg"},
+            "litre":{"cd":"SIUsed_OffSystemUnits1","symbol":"l"},
+            "lumen":{"cd":"SI_NamedDerivedUnits1","symbol":"lm"},
+            "lux":{"cd":"SI_NamedDerivedUnits1","symbol":"lx"},
+            "metre":{"cd":"SI_BaseUnits1","symbol":"m"},
+            "minute":{"cd":"SIUsedOffSystemUnits1","symbol":"min"},
+            "mole":{"cd":"SI_BaseUnits1","symbol":"mol"},
+            "calendar_month":{"cd":"units_time1","symbol":"month"},
+            "neper":{"cd":"SIUsed_OffSystemUnits1","symbol":"Np"},
+            "newton":{"cd":"SI_NamedDerivedUnits1","symbol":"N"},
+            "ohm":{"cd":"SI_NamedDerivedUnits1","symbol":"$\\Omega$"},
+            "pascal":{"cd":"SI_NamedDerivedUnits1","symbol":"Pa"},
+            "radian":{"cd":"SI_NamedDerivedUnits1","symbol":"rad"},
+            "second":{"cd":"SI_BaseUnits1","symbol":"s"},
+            "siemens":{"cd":"SI_NamedDerivedUnits1","symbol":"S"},
+            "sievert":{"cd":"SI_NamedDerivedUnits1","symbol":"Sv"},
+            "steradian":{"cd":"SI_NamedDerivedUnits1","symbol":"sr"},
+            "tesla":{"cd":"SI_NamedDerivedUnits1","symbol":"T"},
+            "tonne":{"cd":"SIUsed_OffSystemUnits1","symbol":"t"},
+            "volt":{"cd":"SI_NamedDerivedUnits1","symbol":"V"},
+            "watt":{"cd":"SI_NamedDerivedUnits1","symbol":"W"},
+            "weber":{"cd":"SI_NamedDerivedUnits1","symbol":"Wb"},
+            "calendar_year":{"cd":"units_time1","symbol":"year"},
+            "degree of arc":{"cd":"SIUsed_OffSystemUnits1","symbol":"\\degree"},
+            "minute of arc":{"cd":"SIUsed_OffSystemUnits1","symbol":"$\\prime$"},
+            "second of arc":{"cd":"SIUsed_OffSystemUnits1","symbol":"$\\prime\\prime$"}
+        }
+    }
+}
+
