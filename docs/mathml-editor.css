@@ -1,0 +1,44 @@
+body {
+    font-family: "Helvetica", "Arial", "Verdana", "serif";
+}
+
+#guppy1 {
+    margin-bottom: 20px;
+}
+
+.container {
+    display: table;
+    margin-bottom: 20px;
+}
+
+div.button {
+    cursor: pointer;
+    color:white;
+    min-height: 23px;
+    background-color:#66f;
+    padding:10px;
+    border-radius: 5px;
+    display: table-cell;
+}
+
+input {
+    min-height: 23px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+textarea {
+    margin-bottom: 20px;
+    min-height: 23px;
+    display:inline-block;
+    background-color: #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    width:90%;
+}
+
+div.label {
+    min-width: 70px;
+    display:block;
+}

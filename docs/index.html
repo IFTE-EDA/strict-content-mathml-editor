@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="node_modules/guppy-js/guppy-default-osk.min.css">
+    <link rel="stylesheet" href="mathml-editor.css">
+    <script type="text/javascript" src="node_modules/guppy-js/guppy.min.js"></script>
+    <script type="text/javascript" src="node_modules/guppy-js/guppy_osk.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/vkiryukhin/vkBeautify@master/vkbeautify.js"></script>
+    <script type="text/javascript" src="node_modules/strict-content-mathml-editor/guppy-xml-to-mathml.js"></script>
+    <script type="text/javascript" src="mathml-editor.js"></script>
+</head>
+
+<body>
+    <h1>Strict Content MathML Editor</h1>
+    <p>This editor helps to create <a href="https://www.w3.org/TR/MathML3/chapter4.html#contm.strict">Strict Content MathML 3.0</a> expressions.</p>
+
+    <p>Features:</p>
+    <ul>
+        <li>Support of custom symbols, e.g. type <code>Umax</code> and get the single symbol <i>U</i><sub>max</sub> instead of the product <i>Umax</i> in the formula editor
+        <li>Support of SI prefixes and units</li>
+        <li>Support of piecewise-defined expressions</li>
+        <li>Automatic detection of integers, real numbers and rational numbers</li>
+    </ul>
+
+    <h2>Editor</h2>
+    <div id="guppy1"></div>
+
+    <h2>Result</h2>
+    <!--
+    <div class="label">LaTeX: </div><textarea type="text" id="output_latex" class="output"></textarea>
+    <div class="label">ASCIIMath: </div><textarea type="text" id="output_asciimath" class="output"></textarea>
+    <div class="label">Text: </div><textarea type="text" id="output_text" class="output"></textarea>
+    <div class="label">JSON: </div><textarea type="text" id="output_ast" class="output"></textarea>
+    <div class="label">XML: </div><textarea type="text" id="output_xml" class="output"></textarea>
+    -->
+    <div class="label">Strict Content MathML3: </div><textarea type="text" id="output_mathml" class="output" rows="30" cols="100"></textarea>
+
+    <p style="text-align:right;">This Strict Content MathML Editor is based on <a href="https://guppy.js.org">Guppy</a> which is licensed under the <a href="https://opensource.org/licenses/MIT">MIT License</a>.</p>
+
+    <h2>Custom Symbols</h2>
+    <p>You can define custom mathematical/physical symbols for later use in the formula.</p>
+
+    <p><strong>Example:</strong>
+    By defining a custom symbol <code>U_max</code>, you can type <code>Umax</code> in the formula editor and get the single symbol <i>U</i><sub>max</sub> instead of the product <i>Umax</i>. In this case, the resulting MathML is <code>&lt;ci&gt;Umax&lt;&#47;ci&gt;</code>.<p>
+
+    <h3>Definition</h3>
+
+    <div class="container">
+        <input type="text" id="input_symbol" placeholder="Symbol, e.g. 'U_max'"></input>
+        <div class="button" onclick="add_symbol()">Add Custom Symbol</div>
+    </div>
+
+    <p>You may use an underscore to separate the main symbol from a subscript.</p>
+
+    <h3>Usage</h3>
+
+    <p>To use a custom symbol, just enter its (case-sensitive) name in the editor.</p>
+
+    <p>If a symbol has a subscript, enter its name <em>without</em> underscore in the editor.</p>
+
+    <h2>Supported Content Dictionaries</h2>
+    <p>In <a href="https://www.w3.org/TR/MathML3/chapter4.html#contm.strict">Strict Content MathML 3.0</a>, all mathematical concepts are grouped in <a href="https://www.openmath.org/cd/">content dictionaries</a>.
+    Currently, this editor supports the following content dictionaries and concepts:</p>
+
+    <!-- Last updated: Feb 18, 2019 -->
+
+    <h3>arith1</h3>
+    <ul>
+        <li>abs</li>
+        <li>divide</li>
+        <li>minus</li>
+        <li>plus</li>
+        <li>power</li>
+        <li>product</li>
+        <li>root</li>
+        <li>sum</li>
+        <li>times</li>
+        <li>unary_minus</li>
+    </ul>
+
+    <h3>calculus1</h3>
+    <ul>
+        <li>defint</li>
+        <li>diff</li>
+        <li>int</li>
+    </ul>
+
+    <h3>directives1</h3>
+    <ul>
+        <li>evaluate</li>
+    </ul>
+
+    <h3>integer1</h3>
+    <ul>
+        <li>factorial</li>
+    </ul>
+
+    <h3>linalg2</h3>
+    <ul>
+        <li>matrix</li>
+        <li>matrixrow</li>
+        <li>vector</li>
+    </ul>
+
+    <h3>logic1</h3>
+    <ul>
+        <li>and</li>
+        <li>false</li>
+        <li>nand</li>
+        <li>nor</li>
+        <li>not</li>
+        <li>or</li>
+        <li>true</li>
+        <li>xnor</li>
+        <li>xor</li>
+    </ul>
+
+    <h3>norm1</h3>
+    <ul>
+        <li>Euclidean_norm</li>
+    </ul>
+
+    <h3>nums1</h3>
+    <ul>
+        <li>infinity</li>
+    </ul>
+
+    <h3>piece1</h3>
+    <ul>
+        <li>piece</li>
+        <li>piecewise</li>
+        <li>otherwise</li>
+    </ul>
+
+    <h3>prog1</h3>
+    <ul>
+        <li>assignment</li>
+        <li>block</li>
+        <li>call_arguments</li>
+        <li>def_arguments</li>
+        <li>for</li>
+        <li>global_var</li>
+        <li>if</li>
+        <li>function_block</li>
+        <li>function_call</li>
+        <li>function_definition</li>
+        <li>local_var</li>
+        <li>procedure_block</li>
+        <li>procedure_call</li>
+        <li>procedure_definition</li>
+        <li>return</li>
+        <li>while</li>
+    </ul>
+
+    <h3>relation1</h3>
+    <ul>
+        <li>eq</li>
+        <li>lt</li>
+        <li>gt</li>
+        <li>neq</li>
+        <li>leq</li>
+        <li>geq</li>
+    </ul>
+
+    <h3>rounding1</h3>
+    <ul>
+        <li>ceiling</li>
+        <li>floor</li>
+        <!--<li>round</li>-->
+        <!--<li>trunc</li>-->
+    </ul>
+
+    <h3>transc1</h3>
+    <ul>
+        <li>arccos</li>
+        <!--<li>arccosh</li>-->
+        <!--<li>arccot</li>-->
+        <!--<li>arccoth</li>-->
+        <!--<li>arccsc</li>-->
+        <!--<li>arccsch</li>-->
+        <!--<li>arcsec</li>-->
+        <!--<li>arcsech</li>-->
+        <li>arcsin</li>
+        <!--<li>arcsinh</li>-->
+        <li>arctan</li>
+        <!--<li>arctanh</li>-->
+        <li>cos</li>
+        <li>cosh</li>
+        <li>cot</li>
+        <!--<li>coth</li>-->
+        <li>csc</li>
+        <!--<li>csch</li>-->
+        <!--<li>exp</li>-->
+        <li>ln</li>
+        <li>log</li>
+        <li>sec</li>
+        <!--<li>sech</li>-->
+        <li>sin</li>
+        <li>sinh</li>
+        <li>tan</li>
+        <li>tanh</li>
+    </ul>
+
+    <h3>units_siprefix1</h3>
+    <ul>
+        <li>yocto</li>
+        <li>zepto</li>
+        <li>atto</li>
+        <li>femto</li>
+        <li>pico</li>
+        <li>nano</li>
+        <li>micro</li>
+        <li>milli</li>
+        <li>centi</li>
+        <li>deci</li>
+        <li>deka</li>
+        <li>hecto</li>
+        <li>kilo</li>
+        <li>mega</li>
+        <li>giga</li>
+        <li>tera</li>
+        <li>peta</li>
+        <li>exa</li>
+        <li>zetta</li>
+        <li>yotta</li>
+    </ul>
+
+    <h3>units_time1</h3>
+    <ul>
+        <li>calendar_month</li>
+        <li>calendar_year</li>
+    </ul>
+
+    <h3>SI_BaseUnits1</h3>
+    <ul>
+        <li>ampere</li>
+        <li>candela</li>
+        <li>kelvin</li>
+        <li>kilogram</li>
+        <li>metre</li>
+        <li>mole</li>
+        <li>second</li>
+    </ul>
+
+    <h3>SI_NamedDerivedUnits1</h3>
+    <ul>
+        <li>becquerel</li>
+        <li>coulomb</li>
+        <li>degree celsius</li>
+        <li>farad</li>
+        <li>gram</li>
+        <li>gray</li>
+        <li>henry</li>
+        <li>hertz</li>
+        <li>joule</li>
+        <li>katal</li>
+        <li>lumen</li>
+        <li>lux</li>
+        <li>newton</li>
+        <li>ohm</li>
+        <li>pascal</li>
+        <li>radian</li>
+        <li>siemens</li>
+        <li>sievert</li>
+        <li>steradian</li>
+        <li>tesla</li>
+        <li>volt</li>
+        <li>watt</li>
+        <li>weber</li>
+    </ul>
+
+    <h3>SIUsed_OffSystemUnits1</h3>
+    <ul>
+        <li>bel</li>
+        <li>day</li>
+        <li>hour</li>
+        <li>litre</li>
+        <li>minute</li>
+        <li>neper</li>
+        <li>tonne</li>
+        <li>degree of arc</li>
+        <li>minute of arc</li>
+        <li>second of arc</li>
+    </ul>
+</body>
+
+</html>

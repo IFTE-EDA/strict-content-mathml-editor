@@ -1,0 +1,34 @@
+{
+  "name": "strict-content-mathml-editor-demo",
+  "version": "1.0.0",
+  "description": "Demo of our WYSIWYG editor for MathML expressions",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IFTE-EDA/strict-content-mathml-editor"
+  },
+  "keywords": [
+    "mathml",
+    "mathml3",
+    "math",
+    "xml",
+    "equation",
+    "formula",
+    "editor"
+  ],
+  "author": {
+    "name": "Andreas Krinke",
+    "url": "https://www.ifte.de"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/IFTE-EDA/strict-content-mathml-editor",
+  "bugs": "https://github.com/IFTE-EDA/strict-content-mathml-editor/issues",
+  "scripts": {
+    "start": "http-server -c-1 -p 8081"
+  },
+  "dependencies": {
+    "strict-content-mathml-editor": "^1.0.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.0"
+  }
+}
