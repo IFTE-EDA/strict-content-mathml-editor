@@ -31,7 +31,7 @@ For a simple demo web page with the formula editor and a text field displaying t
     <script type="text/javascript" src="node_modules/guppy-js/guppy.min.js"></script>
     <script type="text/javascript" src="node_modules/guppy-js/guppy_osk.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/vkiryukhin/vkBeautify@master/vkbeautify.js"></script>
-    <script type="text/javascript" src="guppy-xml-to-mathml.js"></script>
+    <script type="text/javascript" src="node_modules/strict-content-mathml-editor/guppy-xml-to-mathml.js"></script>
     <script type="text/javascript" src="mathml-editor.js"></script>
 </head>
 
@@ -77,7 +77,7 @@ window.onload = function(){
     Guppy.init({
         "osk":new GuppyOSK(),
         "path":"node_modules/guppy-js",
-        "symbols":["node_modules/guppy-js/sym/symbols.json","strict-content-mathml-symbols.json"],
+        "symbols":["node_modules/guppy-js/sym/symbols.json","node_modules/strict-content-mathml-editor/strict-content-mathml-symbols.json"],
         "events": {
             "ready": update_output,
             "change": update_output,
