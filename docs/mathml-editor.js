@@ -49,7 +49,7 @@ window.onload = function(){
     }
 
     Guppy.init({
-        "osk":new GuppyOSK(),
+        "osk":new GuppyOSK({"attach": "focus"}),
         "path":"node_modules/guppy-js",
         "symbols":["node_modules/guppy-js/sym/symbols.json","node_modules/strict-content-mathml-editor/strict-content-mathml-symbols.json"],
         "events": {
